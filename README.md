@@ -56,11 +56,11 @@ Then manually create the module's folders hierarchy as follow:
 |  |  |
 |  |
 |  |- app.module-name.module.ts (module bo)
-|     (module bootstrap for aggregating all the modules artifacts)
+|     (module bootstrap for aggregating all the module's artifacts)
 </pre>
 
 
-Note: We use the `schema` approach instead of `entity` approach because we choosed MongoDB.
+<strong>Note:<strong> We use the `schema` approach instead of `entity` approach because we choosed MongoDB.
 
 Project structure is as follows:
 
