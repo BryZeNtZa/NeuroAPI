@@ -25,6 +25,7 @@ All the application's modules are found in the folder `./src/modules`.
 To create a modules type the command: `nest g module modules/module-name`
 Then manually create the module's folders hierarchy as follow:
 
+<pre>
 |- module-name
 |  |
 |  |- domain
@@ -35,25 +36,38 @@ Then manually create the module's folders hierarchy as follow:
 |  |  |  |- ...
 |  |  |  
 |  |  |- dto
-|  |  |  |
-|  |  |  |- `{transfer-operation-name}`.dto.ts
-|  |  |  |- ...
-|  |  |  
+|  |     |
+|  |     |- `{transfer-operation-name}`.dto.ts
+|  |     |- ...
+|  |   
 |  |- repository
-|  |     |
-|  |     |- `{repository-name}`.repository.ts
-|  |     |
-|  |- services
+|  |  |
+|  |  |- `{repository-name}`.repository.ts
+|  |  |- ...
 |  |
-|
-|   -controllers
+|  |- services
+|  |  |
+|  |  |- `{service-name}`.service.ts
+|  |  |- ...
+|  |  
+|  |-controllers
+|  |  |
+|  |  |- `{controller-name}`.controller.ts
+|  |  |
+|  |
+|  |- app.module-name.module.ts
+</pre>
 
 
 Note: We use the `schema` approach instead of `entity` approach because we choosed MongoDB.
 
 Project structure is as follows:
 
+<pre>
 neuro-api
+|
+|- config
+|   |- all configs files
 |
 |- src
 |  |
@@ -69,7 +83,7 @@ neuro-api
 |   |
 |
 |  - core
-
+</pre>
 
 ## Tools integration
 
