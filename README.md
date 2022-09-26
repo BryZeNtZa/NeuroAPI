@@ -60,7 +60,7 @@ Then manually create the module's folders hierarchy as follow:
 </pre>
 
 
-<strong>Note:<strong> We use the `schema` approach instead of `entity` approach because we choosed MongoDB.
+<strong>Note:</strong> We use the `schema` approach instead of `entity` approach because we choosed MongoDB.
 
 Project structure is as follows:
 
@@ -84,14 +84,19 @@ neuro-api
 |  |
 |  |
 |  |- core
-|     |
-|     |- app non business components: routing, guards, interception, session, loca-storage, etc.
-|
-|  | -app.module.ts
+|  |  |
+|  |  |- app non business components: routing, guards, interception, session, loca-storage, etc.
+|  |
+|  |
+|  |- app.module.ts
 |  |   (Aggregating all the app ressources: module bootstraps, configs, core components)
 |  |
 |  |- main.ts
-|  |  (bootstrap the application and launch the server)
+|      (bootstrap the application and launch the server)
+|
+|
+|- test
+|  (all the tests)
 |  
 |- all app utility files: .envs, git files, docker files, npm files (package*.json), ts files, etc.
 |
