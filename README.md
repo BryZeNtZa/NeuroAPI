@@ -1,12 +1,12 @@
 <p align="center">
-  API side of the Neuro app, a psycho healthcare application
+  <strong>API side of the Neuro app, a psycho healthcare application</strong>
 </p>
 
-# Business context
+## Business context
+Problem: healthcare centers having issues with neuro ...
+Solution: propose a mobile and application that will ...
 
-
-## Tooling
-Project tooling:
+## Project tooling
 
 - Platform: NodeJS 16+
 - Framework: [NestJS](https://docs.nestjs.com/)
@@ -55,7 +55,8 @@ Then manually create the module's folders hierarchy as follow:
 |  |  |- `{controller-name}`.controller.ts
 |  |  |
 |  |
-|  |- app.module-name.module.ts
+|  |- app.module-name.module.ts (module bo)
+|     (module bootstrap for aggregating all the modules artifacts)
 </pre>
 
 
@@ -74,15 +75,26 @@ neuro-api
 |  |- modules
 |  |  |
 |  |  |- `module 1`
-|  |  |   {module 1 structure here: domain, repository, services, controllers}
+|  |  |   {module 1 structure here: domain, repository, services, controllers + module bootstap}
 |  |  |
-|     |- `module 2`
-|     |   {module 2 structure here: domain, repository, services, controllers}
+|  |  |- `module 2`
+|  |  |   {module 2 structure here: domain, repository, services, controllers + module bootstap}
+|  |  |
+|  |  |- `module n`
+|  |
+|  |
+|  |- core
 |     |
-|     |- `module n`
-|   |
+|     |- app non business components: routing, guards, interception, session, loca-storage, etc.
 |
-|  - core
+|  | -app.module.ts
+|  |   (Aggregating all the app ressources: module bootstraps, configs, core components)
+|  |
+|  |- main.ts
+|  |  (bootstrap the application and launch the server)
+|  
+|- all app utility files: .envs, git files, docker files, npm files (package*.json), ts files, etc.
+|
 </pre>
 
 ## Tools integration
