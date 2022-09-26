@@ -130,7 +130,11 @@ Allowing to define app params as environment variables (.env) separated from the
 ## Security
 
 ## Coding practices
-We use [Clean Coding standars](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+We use 
+- [Clean Coding standars](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) well implemented by NestJS;
+which is a very opinionated framework, offering code inspection tools out-of-box: `prettier`, `eslint`.
+
+- [Sonar](https://www.sonarqube.org/)
 
 # Testing
 
