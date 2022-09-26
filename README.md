@@ -102,6 +102,21 @@ neuro-api
 |
 </pre>
 
+### Important design patterns used
+Here we are going to describe all the design patterns and how they implemented in the project
+
+#### Architecture design
+- [Modular structure](https://docs.nestjs.com/modules)
+- microservices
+
+#### App level design
+- [12 factor app](https://12factor)
+
+#### Data level pattern
+- Domain driven design
+- Event-driven design
+
+
 ## Tools integration
 
 ### MongoDB
@@ -112,7 +127,12 @@ We use [Mongoose](https://mongoosejs.com/) the most popular and mature MongoDB o
 - [NestJs config](https://docs.nestjs.com/techniques/configuration) management lib 
 Allowing to define app params as environment variables (.env) separated from the sources, as per the [3rd recommendation of 12 Factor App](https://12factor.net/config)
 
+## Security
 
+## Coding practices
+We use [Clean Coding standars](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+
+# Testing
 
 ## Installation
 
