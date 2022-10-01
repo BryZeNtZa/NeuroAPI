@@ -115,7 +115,9 @@ Here we are going to describe all the design patterns and how they implemented i
 #### Data level pattern
 - Domain driven design
 - Event-driven design
-
+- Data validation
+  `npm install class-validator --save`
+  `npm install class-transformer --save`
 
 ## Tools integration
 
