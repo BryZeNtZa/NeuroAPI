@@ -10,26 +10,31 @@ import { UsersService } from '../services/users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get(':userId')
-  async getUser(@Param('userId') userId: string): Promise<User> {
-    return this.usersService.getUserById(userId);
+  @Get()
+  async index(): Promise<string> {
+    return 'Hello users API';
   }
 
-  @Get()
+  @Get('/get/:id')
+  async getUser(@Param('id') id: string): Promise<User> {
+    return this.usersService.getUserById(id);
+  }
+
+  @Get('/list/:page')
   async getUsers(): Promise<User[]> {
     return this.usersService.getUsers();
   }
 
-  @Post()
-  async createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
+  @Post('/create')
+  async create(@Body() createUserDto: CreateUserDto): Promise<User> {
     return this.usersService.create(createUserDto);
   }
 
-  @Patch(':userId')
-  async updateUser(
-    @Param('userId') userId: string,
+  @Patch('/update/:id')
+  async update(
+    @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<User> {
-    return this.usersService.update(userId, updateUserDto);
+    return this.usersService.update(id, updateUserDto);
   }
 }

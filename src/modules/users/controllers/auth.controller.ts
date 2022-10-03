@@ -13,19 +13,12 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard)
-  @Post('/login')
-  async authenticate(
-    @Body() authCredentialsDto: AuthCredentialsDto,
-  ): Promise<User> {
-    return this.authService.authenticate(authCredentialsDto);
+  @Get('/token')
+  getProfile(@Body() authCredentialsDto: AuthCredentialsDto) {
+    return this.authService.token(authCredentialsDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('/token')
-  getProfile(@Body() authCredentialsDto: AuthCredentialsDto) {
-    return authCredentialsDto;
-  }
-
   @Post('/register')
   async register(@Body() createUserDto: RegisterUserDto): Promise<User> {
     return this.authService.register(createUserDto);

@@ -10,8 +10,8 @@ import { UsersRepository } from '../repository/users.repository';
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
-  async getUserById(userId: string): Promise<User> {
-    return this.usersRepository.findOne({ userId });
+  async getUserById(id: string): Promise<User> {
+    return this.usersRepository.findOne({ id });
   }
 
   async getUsers(): Promise<User[]> {
@@ -22,8 +22,8 @@ export class UsersService {
     return this.usersRepository.create({
       first_name: dto.first_name,
       last_name: dto.last_name,
-      password: '',
-      email: '',
+      email: dto.email,
+      password: dto.password,
     });
   }
 

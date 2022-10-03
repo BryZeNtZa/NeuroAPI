@@ -14,15 +14,19 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async authenticate(credentials: AuthCredentialsDto): Promise<User> {
-    return this.usersRepository.findOne({ credentials });
+  async token(credentials: AuthCredentialsDto) {
+    return this.authenticate(credentials)
+      .then((u: User) => {
+        return {
+          access_token: this.jwtService.sign(u),
+          expires: '60',
+        };
+      })
+      .catch((e) => console.log('Error fetching the API token :', e));
   }
 
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.userId };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
+  async authenticate(credentials: AuthCredentialsDto): Promise<User> {
+    return this.usersRepository.findOne({ credentials });
   }
 
   async register(dto: RegisterUserDto): Promise<User> {
