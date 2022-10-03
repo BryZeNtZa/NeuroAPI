@@ -130,6 +130,7 @@ We use [Mongoose](https://mongoosejs.com/) the most popular and mature MongoDB o
 Allowing to define app params as environment variables (.env) separated from the sources, as per the [3rd recommendation of 12 Factor App](https://12factor.net/config)
 
 ## Security
+- Auth: Nest auth with [Passport lib](https://docs.nestjs.com/security/authentication)
 
 ## Coding practices
 We use 
