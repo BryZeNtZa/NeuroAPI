@@ -2,13 +2,21 @@ import { Module } from '@nestjs/common';
 
 import { configs } from './config/all.config';
 import { mongooseModuleConfigured } from './core/database/database.module';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UsersModule } from './modules/users/users.module';
+import { AppointmentsModule } from './modules/appointments/appointments.module';
+import { PatientsModule } from './modules/patients/patients.module';
+import { BillingModule } from './modules/billing/billing.module';
 
 @Module({
-  imports: [configs, mongooseModuleConfigured, UsersModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    configs,
+    mongooseModuleConfigured,
+    UsersModule,
+    AppointmentsModule,
+    PatientsModule,
+    BillingModule,
+  ],
+  // controllers: [AppController],
+  // providers: [AppService],
 })
 export class AppModule {}

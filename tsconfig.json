@@ -24,8 +24,17 @@
       "@app/exceptions/*": [
         "src/core/exceptions/*"
       ],
+      "@app/common/*": [
+        "src/modules/common/*"
+      ],
       "@app/users/*": [
         "src/modules/users/*"
+      ],
+      "@app/appointements/*": [
+        "src/modules/appointements/*"
+      ],
+      "@app/patients/*": [
+        "src/modules/patients/*"
       ]
     },
   }
