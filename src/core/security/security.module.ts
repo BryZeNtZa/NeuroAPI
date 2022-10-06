@@ -3,11 +3,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { ExtractJwt } from 'passport-jwt';
 
-import {
-  SECURITY_KEY,
-  SECURITY_KEY_EXPIRES,
-  DATABASE_URI,
-} from '../../config/constants';
+import { SECURITY_KEY, SECURITY_KEY_EXPIRES } from '../../config/constants';
 import { Injectable } from '@nestjs/common';
 
 export const jwtModuleConfigured = JwtModule.registerAsync({
@@ -28,7 +24,7 @@ export class StrategyConfig {
     return {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: this.configService.get<string>(DATABASE_URI),
+      secretOrKey: this.configService.get<string>(SECURITY_KEY),
     };
   }
 }

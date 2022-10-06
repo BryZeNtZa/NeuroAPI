@@ -6,6 +6,7 @@ import { User, UserDocument } from '../domain/schemas/user.schema';
 @Injectable()
 export class UsersRepository {
   constructor(@InjectModel(User.name) private model: Model<UserDocument>) {}
+
   async findOne(userFilterQuery: FilterQuery<User>): Promise<User> {
     return this.model.findOne(userFilterQuery);
   }

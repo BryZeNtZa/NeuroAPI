@@ -1,4 +1,3 @@
-export class UpdateUserDto {
-  first_name: string;
-  last_name: string;
-}
+import { CreateUserDto } from './create-user.dto';
+
+export class UpdateUserDto extends CreateUserDto {}

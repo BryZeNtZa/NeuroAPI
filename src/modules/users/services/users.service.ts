@@ -14,7 +14,8 @@ export class UsersService {
     return this.usersRepository.findOne({ id });
   }
 
-  async getUsers(): Promise<User[]> {
+  async getUsers(page: number): Promise<User[]> {
+    console.log(page);
     return this.usersRepository.find({});
   }
 
@@ -29,5 +30,9 @@ export class UsersService {
 
   async update(id: string, dto: UpdateUserDto): Promise<User> {
     return this.usersRepository.findOneAndUpdate({ id }, dto);
+  }
+
+  async delete(id: string): Promise<User> {
+    return this.usersRepository.delete(id);
   }
 }

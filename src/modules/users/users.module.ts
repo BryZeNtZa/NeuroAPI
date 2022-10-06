@@ -15,6 +15,8 @@ import { JwtStrategy } from './auth/strategies/jwt.strategy';
 import { StrategyConfig } from '../../core/security/security.module';
 
 import { jwtModuleConfigured } from '../../core/security/security.module';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './auth/guards/roles.guard';
 
 @Module({
   imports: [
@@ -31,6 +33,10 @@ import { jwtModuleConfigured } from '../../core/security/security.module';
     StrategyConfig,
     LocalStrategy,
     JwtStrategy,
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
   ],
 })
 export class UsersModule {}
