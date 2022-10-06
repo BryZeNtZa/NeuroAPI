@@ -17,7 +17,13 @@ async function bootstrap() {
   SwaggerModule.setup('api/doc', app, document);
 
   await app.listen(3000);
-  Logger.warn(`Neuro server API is running on: ${await app.getUrl()}`);
-  Logger.warn(`See the Neuro API doc at : ${await app.getUrl()}/api/doc`);
+  Logger.warn(
+    `Neuro server API is running on: ${await app.getUrl()}`,
+    '⚡ServerStarted ⚡',
+  );
+  Logger.warn(
+    `See the Neuro API doc at : ${await app.getUrl()}/api/doc`,
+    'NeuroSwaggerApiDoc',
+  );
 }
 bootstrap();

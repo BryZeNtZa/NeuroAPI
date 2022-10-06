@@ -18,12 +18,15 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@config/*": [
+      "@app/config/*": [
         "src/config/*"
       ],
-      "@app/*": [
-        "src/core/*"
+      "@app/exceptions/*": [
+        "src/core/exceptions/*"
       ],
+      "@app/users/*": [
+        "src/modules/users/*"
+      ]
     },
   }
 }

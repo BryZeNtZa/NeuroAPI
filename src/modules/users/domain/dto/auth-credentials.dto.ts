@@ -23,7 +23,7 @@ export class AuthCredentialsDto {
   @ApiProperty({
     description: 'Password',
     type: String,
-    required: false,
+    required: true,
   })
   @IsNotEmpty()
   @MaxLength(30)

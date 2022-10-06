@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  HttpStatus,
   Param,
   Patch,
   Post,
@@ -19,18 +20,22 @@ import { User } from '../domain/schemas/user.schema';
 import { UsersService } from '../services/users.service';
 
 import { MongoExceptionFilter } from '@app/exceptions/filters/mongo-exception.filter';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get()
   async index(): Promise<string> {
     return 'Hello users API';
   }
 
   @ApiBearerAuth()
+  @ApiResponse({
+    status: HttpStatus.OK,
+    type: User,
+    description: 'Fetched user',
+  })
   @UseGuards(JwtAuthGuard)
   @Get('/get/:id')
   async getUser(@Param('id') id: string): Promise<User> {
@@ -38,6 +43,11 @@ export class UsersController {
   }
 
   @ApiBearerAuth()
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    type: [User],
+    description: 'List of users',
+  })
   @UseGuards(JwtAuthGuard)
   @Get('/list/:page')
   async list(@Param('page') page: number): Promise<User[]> {
@@ -45,6 +55,11 @@ export class UsersController {
   }
 
   @ApiBearerAuth()
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    type: User,
+    description: 'Created user',
+  })
   @UseGuards(JwtAuthGuard)
   @Post('/create')
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
@@ -52,6 +67,11 @@ export class UsersController {
   }
 
   @ApiBearerAuth()
+  @ApiResponse({
+    status: HttpStatus.OK,
+    type: User,
+    description: 'Updated user',
+  })
   @UseGuards(JwtAuthGuard)
   @Patch('/update/:id')
   @UseFilters(MongoExceptionFilter)
@@ -63,6 +83,11 @@ export class UsersController {
   }
 
   @ApiBearerAuth()
+  @ApiResponse({
+    status: HttpStatus.OK,
+    type: User,
+    description: 'Deleted user',
+  })
   @UseGuards(JwtAuthGuard)
   @Roles(Role.Admin)
   @Patch('/delete/:id')
