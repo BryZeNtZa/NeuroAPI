@@ -12,10 +12,10 @@ export type TherapistDocument = Therapist & Document;
 export class Therapist {
   @ApiProperty({ type: String })
   @Prop({ type: SchemaTypes.ObjectId })
-  _id: Types.ObjectId;
+  _id?: Types.ObjectId;
 
   @ApiProperty()
-  @Prop({ type: SchemaTypes.ObjectId, ref: User.name })
+  @Prop({ unique: true, type: SchemaTypes.ObjectId, ref: User.name })
   user_id?: string;
 
   @ApiProperty()
@@ -29,23 +29,23 @@ export class Therapist {
     default: [],
   })
   @Prop({ type: [SchemaTypes.ObjectId], ref: Specialization.name })
-  specializations?: [string];
+  specializations?: [Specialization];
 
   @ApiProperty()
   @Prop({ type: SchemaTypes.ObjectId, ref: Insurance.name })
   insurance_id?: string;
 
   @ApiProperty()
-  @Prop()
-  approve: boolean;
+  @Prop({ default: false })
+  approve?: boolean;
 
   @ApiProperty()
-  @Prop()
-  bio: string;
+  @Prop({ default: '' })
+  bio?: string;
 
   @ApiProperty()
-  @Prop()
-  fee: number;
+  @Prop({ default: 0 })
+  fee?: number;
 }
 
 export const TherapistSchema = SchemaFactory.createForClass(Therapist);

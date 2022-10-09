@@ -43,8 +43,8 @@ export class AuthController {
     type: User,
     description: 'User registered successfully',
   })
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  /*@ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)*/
   @Post('/register')
   @UseFilters(MongoExceptionFilter)
   async register(@Body() createUserDto: RegisterUserDto): Promise<User> {

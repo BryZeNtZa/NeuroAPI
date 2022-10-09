@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model } from 'mongoose';
 import { User, UserDocument } from '../domain/schemas/user.schema';
@@ -8,6 +8,7 @@ export class UsersRepository {
   constructor(@InjectModel(User.name) private model: Model<UserDocument>) {}
 
   async findOne(userFilterQuery: FilterQuery<User>): Promise<User> {
+    Logger.log('Request received : ', userFilterQuery);
     return this.model.findOne(userFilterQuery);
   }
 
