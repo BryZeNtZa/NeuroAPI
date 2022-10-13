@@ -1,5 +1,5 @@
 <p align="center">
-  <strong>API side of the Neuro app, a psycho healthcare application</strong>
+  <strong>API side of the Neuro app, a mental health application</strong>
 </p>
 
 ## Business context
