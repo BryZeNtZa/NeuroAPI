@@ -13,11 +13,14 @@ export type AppointmentDocument = Appointment & Document;
 export class Appointment {
   @ApiProperty({ type: String })
   @Prop({ type: SchemaTypes.ObjectId })
-  _id: Types.ObjectId;
+  _id?: Types.ObjectId;
 
-  @ApiProperty()
-  @Prop()
-  date: Date;
+  @ApiProperty({
+    description: 'Appointment db record date',
+    required: true,
+  })
+  @Prop({ default: Date.now() })
+  date?: Date;
 
   @ApiProperty({
     description: 'Appointment time slot',
@@ -25,18 +28,21 @@ export class Appointment {
     enumName: 'Timeslot',
     isArray: false,
     required: false,
-    default: [Timeslot.Morning],
+    default: Timeslot.Morning,
   })
   @Prop()
   timeslot?: Timeslot;
 
   @ApiProperty()
   @Prop({ type: SchemaTypes.ObjectId, ref: Patient.name })
-  patient_id?: string;
+  patient_id?: Types.ObjectId;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'Therapist of the appointment',
+    required: true,
+  })
   @Prop({ type: SchemaTypes.ObjectId, ref: Therapist.name })
-  therapist_id: string;
+  therapist_id: Types.ObjectId;
 
   @ApiProperty({
     description: 'Appointment status',
@@ -49,31 +55,41 @@ export class Appointment {
   @Prop({ default: AppointmentStatus.Pending })
   status?: AppointmentStatus;
 
-  @ApiProperty()
-  @Prop()
-  start_time?: string;
-
-  @ApiProperty()
-  @Prop({ index: true, unique: true })
-  end_time?: string;
-
   @ApiProperty({
-    description: 'Future appointment',
-    required: false,
+    description: 'Starting time of the appointment ISO',
+    required: true,
   })
   @Prop()
-  future_appt?: string;
+  start?: Date;
+
+  @ApiProperty({
+    description: 'Ending time of the appointment ISO',
+    required: true,
+  })
+  @Prop()
+  end?: Date;
+
+  @ApiProperty({
+    description: 'Next appointment id',
+    required: false,
+  })
+  @Prop({ type: SchemaTypes.ObjectId, ref: Appointment.name, default: null })
+  next_id?: Types.ObjectId;
 
   @ApiProperty({
     description: 'Past appointment',
     required: false,
   })
-  @Prop({ default: null })
-  past_appt?: string;
+  @Prop({ type: SchemaTypes.ObjectId, ref: Appointment.name, default: null })
+  previous_id?: Types.ObjectId;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'Appointment note',
+    required: false,
+    default: null,
+  })
   @Prop({ type: SchemaTypes.ObjectId, ref: Note.name })
-  note_id?: string;
+  note_id?: Types.ObjectId;
 }
 
 export const AppointmentSchema = SchemaFactory.createForClass(Appointment);

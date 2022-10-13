@@ -8,11 +8,15 @@ export type DisorderDocument = Disorder & Document;
 export class Disorder {
   @ApiProperty({ type: String })
   @Prop({ type: SchemaTypes.ObjectId })
-  _id: Types.ObjectId;
+  _id?: Types.ObjectId;
+
+  @ApiProperty()
+  @Prop({ type: SchemaTypes.ObjectId, ref: Disorder.name })
+  parent_id?: Types.ObjectId;
 
   @ApiProperty()
   @Prop()
-  disorder: string;
+  name: string;
 }
 
 export const DisorderSchema = SchemaFactory.createForClass(Disorder);
