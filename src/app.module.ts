@@ -4,7 +4,6 @@ import { configs } from './config/all.config';
 import { mongooseModuleConfigured } from './core/database/database.module';
 import { UsersModule } from './modules/users/users.module';
 import { AppointmentsModule } from './modules/appointments/appointments.module';
-import { PatientsModule } from './modules/patients/patients.module';
 import { BillingModule } from './modules/billing/billing.module';
 
 @Module({
@@ -13,7 +12,6 @@ import { BillingModule } from './modules/billing/billing.module';
     mongooseModuleConfigured,
     UsersModule,
     AppointmentsModule,
-    PatientsModule,
     BillingModule,
   ],
   // controllers: [AppController],

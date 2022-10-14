@@ -9,14 +9,14 @@ export type PatientDocument = Patient & Document;
 export class Patient {
   @ApiProperty({ type: String })
   @Prop({ type: SchemaTypes.ObjectId })
-  _id: Types.ObjectId;
+  _id?: Types.ObjectId;
 
   @ApiProperty()
-  @Prop({ type: SchemaTypes.ObjectId, ref: User.name })
-  user_id?: string;
+  @Prop({ type: SchemaTypes.ObjectId, ref: User.name, unique: true })
+  user_id?: Types.ObjectId;
 
-  @ApiProperty()
-  @Prop()
+  @ApiProperty({ type: Number })
+  @Prop({ type: Number })
   age: number;
 }
 

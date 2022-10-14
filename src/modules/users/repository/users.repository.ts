@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { FilterQuery, Model } from 'mongoose';
+import { FilterQuery, Model, Types } from 'mongoose';
 import { User, UserDocument } from '../domain/schemas/user.schema';
 
 @Injectable()
@@ -30,7 +30,10 @@ export class UsersRepository {
     });
   }
 
-  async update(id: string, user: Partial<User>): Promise<User> {
+  async update(
+    id: string | Types.ObjectId,
+    user: Partial<User>,
+  ): Promise<User> {
     return await this.model.findByIdAndUpdate(id, user).exec();
   }
 

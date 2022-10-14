@@ -5,10 +5,9 @@ import { Specialization } from '@app/common/domain/schemas/specialization.schema
 
 export class CreateTherapistDto extends CreateUserDto {
   @ApiProperty({
-    description: "Therapist's user id",
-    isArray: true,
+    description: 'User ID of the Therapist',
     required: false,
-    default: [],
+    default: '',
   })
   user_id?: string;
 
