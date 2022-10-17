@@ -1,17 +1,16 @@
 #!/usr/bin/env groovy
 pipeline {
   agent {
-    label 'dockerbuilder'
+    label 'docker_agent'
   }
   options {
       disableConcurrentBuilds()
   }
   environment {
-    //907502626628.dkr.ecr.us-east-1.amazonaws.com/neuro-api
     VERSION = "1.0"
     REGISTRY = '907502626628.dkr.ecr.us-east-1.amazonaws.com'
-    REGISTRYCREDS = 'ecr:eu-central-1:20972e13-6cf8-4f5b-b1b0-821905b30bf7'
-    REGISTRYPATH = 'neuro'
+    REGISTRYCREDS = 'ecr:us-east-1:abeb44e1-b0b9-4e8c-b48d-43de5fd4ab8c'
+    REGISTRYPATH = 'neuro-api'
     SHORTCOMMIT = ''
     DOCKER_ARGS = '-f Dockerfile .'
   }
@@ -20,7 +19,7 @@ pipeline {
         when { anyOf { branch 'master'; branch 'release/**'; branch 'develop'; branch 'feature/**' } }
         steps {
             withCredentials(
-              bindings: [sshUserPrivateKey(credentialsId: 'jenkins', keyFileVariable: 'key')]) {
+              bindings: [sshUserPrivateKey(credentialsId: 'abeb44e1-b0b9-4e8c-b48d-43de5fd4ab8c', keyFileVariable: 'key')]) {
                                         script {
                                           SHORTCOMMIT = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
                                           sh 'cat $key > key'
