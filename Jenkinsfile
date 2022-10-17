@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 pipeline {
   agent {
-    label 'docker_agent'
+    label 'master'
   }
   options {
       disableConcurrentBuilds()
