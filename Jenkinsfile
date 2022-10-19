@@ -10,7 +10,7 @@ pipeline {
   environment {
     VERSION = "1.0"
     REGISTRY = '907502626628.dkr.ecr.us-east-1.amazonaws.com'
-    REGISTRYCREDS = 'ecr:us-east-1:abeb44e1-b0b9-4e8c-b48d-43de5fd4ab8c'
+    REGISTRYCREDS = 'ecr:us-east-1:450fb06d-0b63-4aaa-bd62-a4b51f407347'
     REGISTRYPATH = 'neuro-api'
     SHORTCOMMIT = ''
     DOCKER_ARGS = '-f Dockerfile .'
