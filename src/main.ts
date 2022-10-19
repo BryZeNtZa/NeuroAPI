@@ -20,7 +20,7 @@ async function bootstrap() {
   app.enableCors();
   // app.use(csurf());
 
-  await app.listen(3000);
+  await app.listen(3000, '0.0.0.0');
 
   Logger.warn(
     `Neuro server API is running on: ${await app.getUrl()}`,
